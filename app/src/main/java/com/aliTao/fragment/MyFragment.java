@@ -2,6 +2,7 @@ package com.aliTao.fragment;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatTextView;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import com.aliTao.Config;
 import com.aliTao.R;
@@ -25,6 +27,12 @@ import com.gyf.immersionbar.ImmersionBar;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by zxy on 2020/7/1 0001 10:57
+ * ******************************************
+ * * 我的
+ * ******************************************
+ */
 public class MyFragment extends Fragment {
 
     public static MyFragment myFragment;
@@ -87,13 +95,7 @@ public class MyFragment extends Fragment {
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 super.onItemChildClick(adapter, view, position);
                 if (view.getId() == R.id.tverification) {
-                    new VerificationDialog(getActivity(), R.style.Translucent_NoTitle,
-                            new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    ToastUtils.toast(getContext(), "验证码错误");
-                                }
-                            }).show();
+                    new VerificationDialog(getActivity(), R.style.Translucent_NoTitle).show();
                 }
             }
         });

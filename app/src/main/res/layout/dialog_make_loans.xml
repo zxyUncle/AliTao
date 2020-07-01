@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/verificationCode"
+            android:text="提现"
             android:textColor="@color/textColor"
             android:textSize="@dimen/sp_18" />
 
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/et_noframe"
-            android:hint="请输入验证码"
+            android:hint="提现金额"
             android:inputType="number"
             android:maxLength="6"
             android:minHeight="45dp"
@@ -64,6 +64,16 @@
             android:textColor="@color/c999999"
             android:textSize="@dimen/sp_16" />
 
+        <TextView
+            android:id="@+id/mTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_25"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_25"
+            android:text="@string/reminder"
+            android:textColor="@color/AA0606"
+            android:textSize="@dimen/sp_14" />
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,7 +19,13 @@ import com.aliTao.R;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class VerificationDialog extends Dialog {
+/**
+ * Created by zxy on 2020/7/1 0001 11:21
+ * ******************************************
+ * * 出款弹出框
+ * ******************************************
+ */
+public class MakeLoansDialog extends Dialog {
 
     /**
      * 上下文对象 *
@@ -32,13 +37,12 @@ public class VerificationDialog extends Dialog {
     public EditText text_code;
 
 
-
-    public VerificationDialog(Activity context) {
+    public MakeLoansDialog(Activity context) {
         super(context);
         this.context = context;
     }
 
-    public VerificationDialog(Activity context, int theme) {
+    public MakeLoansDialog(Activity context, int theme) {
         super(context, theme);
         this.context = context;
     }
@@ -47,7 +51,7 @@ public class VerificationDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 指定布局
-        this.setContentView(R.layout.dialog_verification_code);
+        this.setContentView(R.layout.dialog_make_loans);
         text_code = (EditText) findViewById(R.id.text_code);
         btn_save = (AppCompatTextView) findViewById(R.id.btn_save_pop);
         btn_cancle_pop = (AppCompatTextView) findViewById(R.id.btn_cancle_pop);
@@ -69,9 +73,9 @@ public class VerificationDialog extends Dialog {
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(text_code.getText().toString().trim().length()>=6){
+                if (text_code.getText().toString().trim().length() >= 6) {
                     Toast.makeText(context, "验证码失效", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     Toast.makeText(context, "验证码错误", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -111,11 +111,6 @@
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="@color/cf0f0f0" />
-
-
-
-
-
         <!--    交易密码    -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -240,7 +235,7 @@
             android:layout_marginLeft="@dimen/dp_25"
             android:layout_marginTop="@dimen/dp_10"
             android:layout_marginRight="@dimen/dp_25"
-            android:text="温馨提示：你好，位了保障你的权益，请确保你的卡号与支行信息无误，如填写错误导致无法转账，本平台不负任何责任！"
+            android:text="@string/reminder"
             android:textColor="@color/AA0606"
             android:textSize="@dimen/sp_14" />
 

@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cffffff"
-    android:overScrollMode="never"
     android:fillViewport="true"
+    android:overScrollMode="never"
     android:scrollbars="none">
 
     <LinearLayout
@@ -15,38 +15,42 @@
         android:padding="@dimen/dp_15"
         android:visibility="visible">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="信息确认"
+            android:textColor="@color/c333333"
+            android:textSize="@dimen/sp_20" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_15"
             android:orientation="horizontal">
             <!--姓名-->
             <TextView
                 android:id="@+id/tvName"
-                android:layout_width="@dimen/dp_70"
+                android:layout_width="@dimen/dp_80"
                 android:layout_height="wrap_content"
                 android:text="姓名："
                 android:textColor="@color/c333333"
                 android:textSize="@dimen/sp_16" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/et_noframe"
-                android:hint="真实姓名"
                 android:inputType="text"
                 android:lines="1"
                 android:maxLength="11"
                 android:padding="@dimen/dp_10"
+                android:text="张三"
                 android:textSize="@dimen/sp_16" />
         </LinearLayout>
 
 
-        <View
-            android:id="@+id/mView1"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/cf0f0f0" />
         <!--    预留手机号    -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,30 +59,48 @@
 
             <TextView
                 android:id="@+id/tvPhoto"
-                android:layout_width="@dimen/dp_70"
+                android:layout_width="@dimen/dp_80"
                 android:layout_height="wrap_content"
-                android:text="手机号："
+                android:text="手机号码："
                 android:textColor="@color/c333333"
                 android:textSize="@dimen/sp_16" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etPhoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/et_noframe"
-                android:hint="银行预留手机号码"
                 android:inputType="phone"
                 android:lines="1"
                 android:maxLength="11"
                 android:padding="@dimen/dp_10"
+                android:text="18682026492"
                 android:textSize="@dimen/sp_16" />
         </LinearLayout>
-
-        <View
-            android:id="@+id/mView2"
+        <!--    身份证号码    -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/cf0f0f0" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="wrap_content"
+                android:text="身份证号："
+                android:textColor="@color/c333333"
+                android:textSize="@dimen/sp_16" />
+
+            <TextView
+                android:id="@+id/tvIdentityCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/et_noframe"
+                android:inputType="phone"
+                android:lines="1"
+                android:padding="@dimen/dp_10"
+                android:text="431224199907245123"
+                android:textSize="@dimen/sp_16" />
+        </LinearLayout>
         <!--    银行卡号    -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -86,74 +108,47 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvBankCard"
-                android:layout_width="@dimen/dp_70"
+                android:layout_width="@dimen/dp_80"
                 android:layout_height="wrap_content"
-                android:text="银行卡："
+                android:text="银行卡号："
                 android:textColor="@color/c333333"
                 android:textSize="@dimen/sp_16" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etBankCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/et_noframe"
-                android:hint="银行卡号"
                 android:inputType="phone"
                 android:lines="1"
-                android:maxLength="30"
                 android:padding="@dimen/dp_10"
+                android:text="431224199907245123"
                 android:textSize="@dimen/sp_16" />
         </LinearLayout>
-
-        <View
-            android:id="@+id/mView3"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/cf0f0f0" />
 
         <!--    银行名称    -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="gone">
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvBankName"
-                android:layout_width="@dimen/dp_70"
+                android:layout_width="@dimen/dp_80"
                 android:layout_height="wrap_content"
-                android:text="银行："
+                android:text="银行名称："
                 android:textColor="@color/c333333"
                 android:textSize="@dimen/sp_16" />
 
-            <EditText
-                android:id="@+id/etBankName"
+            <TextView
+                android:id="@+id/tvBankName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/et_noframe"
-                android:hint="银行名称"
-                android:inputType="text"
                 android:lines="1"
-                android:maxLength="20"
                 android:padding="@dimen/dp_10"
+                android:text="中国银行"
                 android:textSize="@dimen/sp_16" />
         </LinearLayout>
-
-        <View
-            android:id="@+id/mView4"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/cf0f0f0" />
-
-
-        <View
-            android:id="@+id/mView5"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/cf0f0f0" />
-
-
         <!--    交易密码    -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -162,134 +157,39 @@
 
             <TextView
                 android:id="@+id/tvDealPassword"
-                android:layout_width="@dimen/dp_70"
+                android:layout_width="@dimen/dp_80"
                 android:layout_height="wrap_content"
                 android:text="密码："
                 android:textColor="@color/c333333"
                 android:textSize="@dimen/sp_16" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etDealPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/et_noframe"
-                android:hint="交易密码"
                 android:inputType="text"
                 android:lines="1"
                 android:maxLength="20"
                 android:padding="@dimen/dp_10"
+                android:text="交易密码"
                 android:textSize="@dimen/sp_16" />
         </LinearLayout>
 
-        <View
-            android:id="@+id/mView7"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/cf0f0f0" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-             />
+            android:layout_height="100dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-
-            <RelativeLayout
-                android:id="@+id/mFlFront"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/dp_100"
-                android:layout_marginTop="@dimen/dp_15"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:id="@+id/mImgFront"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/scrxmzp" />
-
-                <ImageView
-                    android:id="@+id/mImageView"
-                    android:layout_width="@dimen/dp_40"
-                    android:layout_height="@dimen/dp_40"
-                    android:layout_centerInParent="true"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/sczjzp" />
-
-                <TextView
-                    android:id="@+id/mTvFront"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/mImageView"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/dp_7"
-                    android:text="上传人像面照片"
-                    android:textColor="@color/c333333"
-                    android:textSize="@dimen/sp_15" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/mFlBack"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/dp_100"
-                android:layout_marginTop="@dimen/dp_15"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:id="@+id/mImgBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/scghmzp" />
-
-                <ImageView
-                    android:id="@+id/mImageView1"
-                    android:layout_width="@dimen/dp_40"
-                    android:layout_height="@dimen/dp_40"
-                    android:layout_centerInParent="true"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/sczjzp" />
-
-                <TextView
-                    android:id="@+id/mTvBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/mImageView1"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/dp_7"
-                    android:text="上传国徽面照片"
-                    android:textColor="@color/c333333"
-                    android:textSize="@dimen/sp_15" />
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/mTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_25"
-            android:layout_marginTop="@dimen/dp_10"
-            android:layout_marginRight="@dimen/dp_25"
-            android:text="温馨提示：你好，位了保障你的权益，请确保你的卡号与支行信息无误，如填写错误导致无法转账，本平台不负任何责任！"
-            android:textColor="@color/AA0606"
-            android:textSize="@dimen/sp_14" />
 
         <Button
-            android:id="@+id/btnBankCardNext"
+            android:id="@+id/btnComfig"
             android:layout_width="@dimen/dp_200"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="@dimen/dp_20"
             android:background="@drawable/btn_round_black"
-            android:text="@string/next"
+            android:text="确定"
             android:textColor="@drawable/text_color_whilt"
             android:textSize="@dimen/sp_16"
             android:visibility="visible" />

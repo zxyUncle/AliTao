@@ -5,11 +5,8 @@
     <color name="colorAccent">#FF4081</color>
 
 
-
-
-
     <color name="toolbar_bg">#f5f5f5</color>
-<color name="backgroud_color">#00000000</color>
+    <color name="backgroud_color">#00000000</color>
     <color name="cffffff">#ffffff</color>
     <color name="ce5e5e5">#e5e5e5</color>
     <color name="cf0f0f0">#f0f0f0</color>

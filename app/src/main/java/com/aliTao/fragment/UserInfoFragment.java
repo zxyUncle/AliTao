@@ -9,7 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.aliTao.R;
-
+/**
+ * Created by zxy on 2020/7/1 0001 10:43
+ * ******************************************
+ * * 用户信息
+ * ******************************************
+ */
 public class UserInfoFragment extends Fragment {
     public static UserInfoFragment userInfoFragment;
     private View view;

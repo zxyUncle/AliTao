@@ -19,6 +19,8 @@
     <string name="verification">验证</string>
     <string name="verificationCode">验证码</string>
 
+    <string name="reminder">温馨提示：你好，位了保障你的权益，请确保你的卡号与支行信息无误，如填写错误导致无法转账，本平台不负任何责任！</string>
+
 </resources>
 
 

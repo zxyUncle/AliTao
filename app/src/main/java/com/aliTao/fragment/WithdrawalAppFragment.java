@@ -16,7 +16,10 @@ import android.widget.RadioGroup;
 import com.aliTao.R;
 
 /**
- * 提现申请fragment
+ * Created by zxy on 2020/7/1 0001 10:43
+ * ******************************************
+ * * 提现申请
+ * ******************************************
  */
 public class WithdrawalAppFragment extends Fragment {
     public static WithdrawalAppFragment withdrawalAppFragment;
