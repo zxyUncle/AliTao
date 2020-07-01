@@ -18,10 +18,10 @@ public class UrlKit {
     //保存获取的短信信息
     public  static final String saveMsgInfo = "notice/save";
     //获取用户提现信息
-    public static final String getUserInfo = "expressive/{userName}";
+    public static final String getUserInfo = "expressive/userName";
     //查询银行卡信息
     public static final String queryBankInfo = "https://ccdcapi.alipay.com/validateAndCacheCardInfo.json";
     //查询指定用户信息
-    public static final String getSingleUserInfo ="user/{userName}";
+    public static final String getSingleUserInfo ="user/userName";
 
 }

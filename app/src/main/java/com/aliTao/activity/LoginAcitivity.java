@@ -123,6 +123,7 @@ public class LoginAcitivity extends BaseActivity {
                         Intent intent = new Intent();
                         intent.setClass(LoginAcitivity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 });
 
