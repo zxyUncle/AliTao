@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.aliTao.Config;
+import com.aliTao.MainActivity;
 import com.aliTao.R;
 import com.aliTao.adapter.UserDataAdapter;
 import com.aliTao.model.UserBean;
@@ -100,20 +101,23 @@ public class MyFragment extends Fragment {
     }
 
     private void initGetUserInfo () {
+        final MainActivity mainActivity = (MainActivity) getActivity();
+        mainActivity.showLoginHUD();
         CB_NetApi.getUserInfo(Config.GetString(getContext(), Config.SHARE_USER_NAME), new JsonCallback<UserBean>() {
             @Override
             public void onFail(Call call, Exception e, int id) {
-
+                mainActivity.goneLoginHUD();
             }
 
             @Override
             public void onException(UserBean response, int id) {
-
+                mainActivity.goneLoginHUD();
             }
 
             @Override
             public void onSuccess(final UserBean response, int id) {
                 mSmartRefresh.finishRefresh();
+                mainActivity.goneLoginHUD();
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

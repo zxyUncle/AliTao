@@ -164,7 +164,7 @@ public class ConfrimMoneyFragment extends Fragment {
                     @Override
                     public void run() {
                         if (response != null) {
-                            ToastUtils.toast(getContext(),response.getInfo() == null ?"提现失败" : response.getInfo());
+                            ToastUtils.toast(getContext(),response.getInfo() == null ?"申请失败" : response.getInfo());
                         }
                     }
                 });
@@ -178,7 +178,7 @@ public class ConfrimMoneyFragment extends Fragment {
                     public void run() {
                         if (response != null) {
                             makeLoansDialog.dismiss();
-                            ToastUtils.toast(getContext(),"提现成功");
+                            ToastUtils.toast(getContext(),"申请成功");
                         }
                     }
                 });
