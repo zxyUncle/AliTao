@@ -8,15 +8,15 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/my"
-        android:gravity="center"
-        android:textStyle="bold"
         android:background="@color/toolbar_bg"
+        android:gravity="center"
+        android:text="@string/my"
         android:textColor="@color/textColor"
         android:textSize="@dimen/sp_18"
-        />
+        android:textStyle="bold" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 </LinearLayout>

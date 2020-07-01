@@ -44,9 +44,10 @@
                     android:gravity="center_vertical"
                     android:hint="请输入用户名"
                     android:inputType="phone"
+                    android:text="11111111111"
                     android:paddingLeft="10dp"
                     android:textColor="@color/colorGray"
-                    android:textSize="16sp"></android.support.design.widget.TextInputEditText>
+                    android:textSize="16sp"/>
 
             </android.support.design.widget.TextInputLayout>
 

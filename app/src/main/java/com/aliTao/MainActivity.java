@@ -38,6 +38,7 @@ import com.aliTao.fragment.WithdrawalAppFragment;
 import com.aliTao.model.AppInfo;
 import com.aliTao.service.MonitorService;
 import com.aliTao.service.NotificationCollectorService;
+import com.gyf.immersionbar.ImmersionBar;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
@@ -109,6 +110,16 @@ public class MainActivity extends AppCompatActivity {
     private void initView () {
         bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomnavigation);
         content = (FrameLayout) findViewById(R.id.content);
+
+        //状态栏和导航栏管理
+        ImmersionBar mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar
+                .keyboardEnable(true)
+                .navigationBarWithKitkatEnable(true)
+                .statusBarDarkFont(true)
+                .fitsSystemWindows(true)//解决布局和状态栏重叠
+                .statusBarColor(R.color.toolbar_bg)
+                .init();
     }
     @Override
     protected void onDestroy() {

@@ -59,17 +59,7 @@ public class MyFragment extends Fragment {
     private void initView() {
         recyclerView = (RecyclerView) view.findViewById(R.id.rv);
         toolbar = (AppCompatTextView) view.findViewById(R.id.toolbar);
-        toolbar.setPadding(0, 40, 0, 40);
-        //状态栏和导航栏管理
-        ImmersionBar mImmersionBar = ImmersionBar.with(this);
-        mImmersionBar.keyboardEnable(true)
-                .navigationBarWithKitkatEnable(false)
-                .statusBarColor(R.color.tranlation)
-                .fullScreen(true)
-                .fitsSystemWindows(true)
-                .statusBarDarkFont(false).fitsSystemWindows(false)
-                .init();
-        Config.setStatusBarMode(getActivity(),true);
+        Config.setStatusBarMode(getActivity(), true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         if (adapter == null) {
@@ -77,16 +67,16 @@ public class MyFragment extends Fragment {
         }
         recyclerView.setAdapter(adapter);
         List<UserBean> userBeanList = new ArrayList<>();
-        for (int i =0;i<10;i++) {
+        for (int i = 0; i < 10; i++) {
             UserBean userBean = new UserBean();
-            userBean.setAmount(i+"00");
+            userBean.setAmount(i + "00");
             userBean.setApplyTime("2020-06-30 12:00:00");
             userBeanList.add(userBean);
         }
         adapter.setNewData(userBeanList);
     }
 
-    private void  initLinstener () {
+    private void initLinstener() {
         recyclerView.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
@@ -97,11 +87,11 @@ public class MyFragment extends Fragment {
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 super.onItemChildClick(adapter, view, position);
                 if (view.getId() == R.id.tverification) {
-                  new VerificationDialog(getActivity(),R.style.Translucent_NoTitle,
+                    new VerificationDialog(getActivity(), R.style.Translucent_NoTitle,
                             new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    ToastUtils.toast(getContext(),"验证码错误");
+                                    ToastUtils.toast(getContext(), "验证码错误");
                                 }
                             }).show();
                 }
