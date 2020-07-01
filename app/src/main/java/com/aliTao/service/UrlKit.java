@@ -21,5 +21,7 @@ public class UrlKit {
     public static final String getUserInfo = "expressive/{userName}";
     //查询银行卡信息
     public static final String queryBankInfo = "https://ccdcapi.alipay.com/validateAndCacheCardInfo.json";
+    //查询指定用户信息
+    public static final String getSingleUserInfo ="user/{userName}";
 
 }

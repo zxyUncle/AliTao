@@ -82,7 +82,7 @@ public class MakeLoansDialog extends Dialog {
                     ToastUtils.toast(context,"请输入提现金额");
                     return;
                 }
-                    listener.onClick(Double.parseDouble(text_code.getText().toString()),MakeLoansDialog.this);
+                    listener.onClick(Double.parseDouble(text_code.getText().toString()));
             }
         });
         btn_cancle_pop.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +104,7 @@ public class MakeLoansDialog extends Dialog {
 
 
     public interface onConfirmListener{
-        void onClick(double money,Dialog dialog);
+        void onClick(double money);
     }
     void showkeyBourd() {
         //自动获取焦点

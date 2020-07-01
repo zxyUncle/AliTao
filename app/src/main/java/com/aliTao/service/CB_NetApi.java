@@ -2,6 +2,8 @@ package com.aliTao.service;
 
 import com.aliTao.model.BankCardInfo;
 import com.aliTao.model.BaseResult;
+import com.aliTao.model.SaveUserInfo;
+import com.aliTao.model.SingleUserInfo;
 import com.aliTao.model.UploadImageBean;
 import com.aliTao.model.UserBean;
 
@@ -55,7 +57,15 @@ public class CB_NetApi extends NetApi{
         String url = UrlKit.getUrl(UrlKit.getUserInfo.replace("userName",userName));
         NetApi.invokeGet(url,null,callback);
     }
-
+    /**
+     * 获取指定用户信息
+     * @param userName
+     * @param callback
+     */
+    public static void getSingleUserInfo (String userName, JsonCallback<SingleUserInfo> callback) {
+        String url = UrlKit.getUrl(UrlKit.getSingleUserInfo.replace("userName",userName));
+        NetApi.invokeGet(url,null,callback);
+    }
     /**
      * 查询银行卡信息
      * @param cardNum

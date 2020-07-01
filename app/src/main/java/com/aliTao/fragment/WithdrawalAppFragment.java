@@ -13,12 +13,19 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.aliTao.Config;
+import com.aliTao.MainActivity;
 import com.aliTao.R;
+import com.aliTao.model.SaveUserInfo;
+import com.aliTao.service.CB_NetApi;
+import com.aliTao.service.JsonCallback;
 import com.aliTao.utils.EventBusMessage;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import okhttp3.Call;
 
 /**
  * Created by zxy on 2020/7/1 0001 10:43
@@ -36,21 +43,9 @@ public class WithdrawalAppFragment extends Fragment {
     public UserInfoFragment userInfoFragment;
     private int position;
 
-    @Override
-    public void onAttachFragment(Fragment fragment) {
-        super.onAttachFragment(fragment);
-        if (userInfoFragment == null && fragment instanceof UserInfoFragment) {
-            userInfoFragment = (UserInfoFragment) fragment;
-        } else if (confrimMoneyFragment == null && fragment instanceof ConfrimMoneyFragment) {
-            confrimMoneyFragment = (ConfrimMoneyFragment) fragment;
-        }
-    }
-
     /**
      * Fragment 管理
      */
-    private FragmentManager fragmentManager;
-    private FragmentTransaction transaction;
 
     public static WithdrawalAppFragment newInstance() {
         if (withdrawalAppFragment == null) {
@@ -84,12 +79,11 @@ public class WithdrawalAppFragment extends Fragment {
     }
 
     private void initView() {
+        confrimMoneyFragment = ConfrimMoneyFragment.newInstance();
+        userInfoFragment = UserInfoFragment.newInstance();
         radioGroup = (RadioGroup) view.findViewById(R.id.mRadioGroup);
         userInfo = (RadioButton) view.findViewById(R.id.mRadioButton1);
         confirmMoney = (RadioButton) view.findViewById(R.id.mRadioButton3);
-        if (fragmentManager == null) {
-            fragmentManager = getChildFragmentManager();
-        }
         userInfo.setChecked(true);
         confirmMoney.setChecked(false);
         setTabSelection(0);
@@ -110,32 +104,27 @@ public class WithdrawalAppFragment extends Fragment {
     public void setTabSelection(int position) {
         //记录position
         this.position = position;
+        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
         //更改底部导航栏按钮状态
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
         // 先隐藏掉所有的Fragment，以防止有多个Fragment显示在界面上的情况
-        hideFragments(transaction);
-//        transaction.hide(mHomeFragment).hide(mMessageFragment).hide(mMineFragment).hide(mMoreFragment).commit();
-        transaction = fragmentManager.beginTransaction();
+        hideFragments(fragmentTransaction);
         switch (position) {
             case 0:
-                if (userInfoFragment == null) {
-                    userInfoFragment = UserInfoFragment.newInstance();
-                    transaction.add(R.id.mFrameLayout, userInfoFragment, "userInfoFragment");
-                } else {
-                    transaction.show(userInfoFragment);
+                if (!userInfoFragment.isAdded()) {
+                    fragmentTransaction.add(R.id.mFrameLayout, userInfoFragment, "userInfoFragment");
                 }
+                fragmentTransaction.show(userInfoFragment);
+
                 break;
             case 1:
-                if (confrimMoneyFragment == null) {
-                    confrimMoneyFragment = ConfrimMoneyFragment.newInstance();
-                    transaction.add(R.id.mFrameLayout, confrimMoneyFragment, "confrimMoneyFragment");
-                } else {
-                    transaction.show(confrimMoneyFragment);
+                if (!confrimMoneyFragment.isAdded()) {
+                    fragmentTransaction.add(R.id.mFrameLayout, confrimMoneyFragment, "confrimMoneyFragment");
                 }
+                fragmentTransaction.show(confrimMoneyFragment);
                 break;
 
         }
-        transaction.commit();
+        fragmentTransaction.commit();
     }
 
     /**
@@ -157,8 +146,6 @@ public class WithdrawalAppFragment extends Fragment {
             transaction.hide(userInfoFragment);
         if (confrimMoneyFragment != null)
             transaction.hide(confrimMoneyFragment);
-
-        transaction.commit();
     }
 
     @Override
@@ -166,4 +153,6 @@ public class WithdrawalAppFragment extends Fragment {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
+
 }

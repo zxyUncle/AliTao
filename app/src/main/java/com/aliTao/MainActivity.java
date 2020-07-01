@@ -63,8 +63,8 @@ public class MainActivity extends TakePhotoActivity {
     private BottomNavigationViewEx bottomNavigationViewEx;
     private FrameLayout content;
 
-    private MyFragment myFragment;
-    private WithdrawalAppFragment withdrawFragment;
+    private Fragment myFragment;
+    private Fragment withdrawFragment;
     /**
      * Fragment 管理
      */
@@ -82,37 +82,29 @@ public class MainActivity extends TakePhotoActivity {
         init();
         initBottomView();
     }
-    @Override
-    public void onAttachFragment(Fragment fragment) {
-        super.onAttachFragment(fragment);
-        if (withdrawFragment == null && fragment instanceof WithdrawalAppFragment) {
-            withdrawFragment = (WithdrawalAppFragment) fragment;
-        } else if (myFragment == null && fragment instanceof MyFragment) {
-            myFragment = (MyFragment) fragment;
-        }
-    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            transaction = fragmentManager.beginTransaction();
+            hideFragments(transaction);
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    Config.setStatusBarMode(MainActivity.this,true);
-
-                    addFragment(WithdrawalAppFragment.class.getSimpleName());
-                    return true;
-
-
+                    if(withdrawFragment==null){
+                        withdrawFragment = WithdrawalAppFragment.newInstance();
+                        transaction.add(R.id.content,withdrawFragment);
+                    }
+                    transaction.show(withdrawFragment);
                 case R.id.navigation_my:
-                    Config.setStatusBarMode(MainActivity.this,true);
-
-                    addFragment(MyFragment.class.getSimpleName());
-//                    addFragment(RoutingTable.loadMyFragment());
-                    return true;
+                    if(myFragment==null){
+                        myFragment = MyFragment.newInstance();
+                        transaction.add(R.id.content,myFragment);
+                    }
+                    transaction.show(myFragment);
             }
-            return false;
+            transaction.commit();
+            return true;
         }
 
     };
@@ -152,8 +144,7 @@ public class MainActivity extends TakePhotoActivity {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
         startService(serviceIntent);
-        transaction.remove(withdrawFragment);
-        transaction.remove(myFragment);
+
     }
 
 
@@ -448,7 +439,6 @@ public class MainActivity extends TakePhotoActivity {
         if (withdrawFragment != null) {
             transaction.hide(withdrawFragment);
         }
-
         if (myFragment != null) {
             transaction.hide(myFragment);
         }

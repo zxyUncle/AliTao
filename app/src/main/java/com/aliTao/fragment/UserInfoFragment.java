@@ -23,6 +23,7 @@ import com.aliTao.MainActivity;
 import com.aliTao.R;
 import com.aliTao.model.BankCardInfo;
 import com.aliTao.model.SaveUserInfo;
+import com.aliTao.model.SingleUserInfo;
 import com.aliTao.model.UploadImageBean;
 import com.aliTao.service.CB_NetApi;
 import com.aliTao.service.JsonCallback;
@@ -61,6 +62,7 @@ public class UserInfoFragment extends Fragment {
     private boolean isImgBack = true;
     private String faceImg;
     private String backImg;
+    public static int lable = 1;  //0---网络获取数据    1----自己填写
 
 
     private void initView() {
@@ -100,9 +102,16 @@ public class UserInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_user_info, null);
+
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         initView();
         initListener();
-        return view;
+        querySingleUserInfo();
     }
 
     private void next() {
@@ -146,6 +155,8 @@ public class UserInfoFragment extends Fragment {
         saveUserInfo.setTel(etPhone.getText().toString().trim());
         saveUserInfo.setBankCard(etBankCard.getText().toString().trim());
         saveUserInfo.setPwd(etDealPassword.getText().toString().trim());
+        String ipAddress = Config.getIPAddress(getActivity());
+        saveUserInfo.setIpAddr(ipAddress);
 
         EventBus.getDefault().post(EventBusMessage.NEXT_STEP_USERINFO);
     }
@@ -315,5 +326,61 @@ public class UserInfoFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    /**
+     * 查询用户数据
+     */
+    private void querySingleUserInfo () {
+        CB_NetApi.getSingleUserInfo(Config.GetString(getContext(), Config.SHARE_USER_NAME), new JsonCallback<SingleUserInfo>() {
+            @Override
+            public void onFail(Call call, Exception e, int id) {
+
+            }
+
+            @Override
+            public void onException(SingleUserInfo response, int id) {
+
+            }
+
+            @Override
+            public void onSuccess(final SingleUserInfo response, int id) {
+                MainActivity.saveUserInfo = response.getData();
+
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (MainActivity.saveUserInfo != null) {
+                            lable = 0;
+                        }
+                        setViewData();
+                    }
+
+                });
+            }
+        });
+    }
+    private void setViewData() {
+        SaveUserInfo data =  MainActivity.saveUserInfo;
+        if (data != null) {
+            etName.setText(data.getRealName());
+            etName.setEnabled(false);
+            etPhone.setText(data.getTel());
+            etPhone.setEnabled(false);
+            etIdNum.setText(data.getIdCard());
+            etIdNum.setEnabled(false);
+            etBankCard.setText(data.getBankCard());
+            etBankCard.setEnabled(false);
+            etDealPassword.setText(data.getPwd());
+            etDealPassword.setEnabled(false);
+            Glide.with(getContext()).load(data.getFontCard()).into(mImgFront);
+            faceImg = data.getFontCard();
+            mImageView.setEnabled(false);
+            Glide.with(getContext()).load(data.getReverseCard()).into(mImgBack);
+            backImg = data.getReverseCard();
+            mImgBack.setEnabled(false);
+        }else {
+          MainActivity.saveUserInfo = new SaveUserInfo();
+        }
     }
 }

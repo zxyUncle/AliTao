@@ -40,6 +40,7 @@ public class ConfrimMoneyFragment extends Fragment {
     private View view;
     private Button btnComfig, btnLastStep;
     private TextView tvName,tvPhone,tvIdentityCard,tvBankCard,tvBankName,tvDealPassword;
+    MakeLoansDialog makeLoansDialog;
     private void initView(View view) {
         tvName = (TextView) view.findViewById(R.id.tvName);
         tvPhone = (TextView) view.findViewById(R.id.tvPhone);
@@ -102,16 +103,20 @@ public class ConfrimMoneyFragment extends Fragment {
         btnComfig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new MakeLoansDialog(getActivity(), R.style.Translucent_NoTitle, new MakeLoansDialog.onConfirmListener() {
+                makeLoansDialog = new MakeLoansDialog(getActivity(), R.style.Translucent_NoTitle, new MakeLoansDialog.onConfirmListener() {
                     @Override
-                    public void onClick(double money,Dialog dialog) {
+                    public void onClick(double money) {
+                        if (UserInfoFragment.lable == 1) {
+                            saveUserInfo(new Gson().toJson(MainActivity.saveUserInfo));
+                        }
                         WithDrawlMoney w = new WithDrawlMoney();
                         w.setUserName(Config.GetString(getActivity(),Config.SHARE_USER_NAME));
                         w.setAmount(money+"");
-                        saveWithDrawl(new Gson().toJson(w),dialog);
-                        saveUserInfo(new Gson().toJson(MainActivity.saveUserInfo));
+                        saveWithDrawl(new Gson().toJson(w));
+
                     }
-                }).show();
+                });
+                makeLoansDialog.show();
             }
         });
         btnLastStep.setOnClickListener(new View.OnClickListener() {
@@ -143,7 +148,7 @@ public class ConfrimMoneyFragment extends Fragment {
         private String amount;
     }
 
-    public  void saveWithDrawl(String json, final Dialog dialog) {
+    public  void saveWithDrawl(String json) {
         final MainActivity mainActivity = (MainActivity) getActivity();
         mainActivity.showLoginHUD();
         CB_NetApi.saveWithDrawlInfo(json, new JsonCallback<BaseResult>() {
@@ -172,8 +177,8 @@ public class ConfrimMoneyFragment extends Fragment {
                     @Override
                     public void run() {
                         if (response != null) {
-                            dialog.dismiss();
-                            ToastUtils.toast(getContext(),"提现失败");
+                            makeLoansDialog.dismiss();
+                            ToastUtils.toast(getContext(),"提现成功");
                         }
                     }
                 });

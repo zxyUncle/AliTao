@@ -120,6 +120,7 @@ public class MyFragment extends Fragment {
                         if (response != null && response.getData() != null && response.getData().size() !=0) {
                             adapter.setNewData(response.getData());
                             tvNoMessage.setVisibility(View.GONE);
+                            recyclerView.setVisibility(View.VISIBLE);
                         } else {
                             tvNoMessage.setVisibility(View.VISIBLE);
                             recyclerView.setVisibility(View.GONE);
