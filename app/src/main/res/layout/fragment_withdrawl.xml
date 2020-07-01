@@ -64,7 +64,7 @@
             android:button="@null"
             android:enabled="false"
             android:gravity="center"
-            android:text="确认出款"
+            android:text="确认申请"
             android:textColor="@drawable/select_color_ffffff"
             android:textSize="@dimen/dp_16" />
     </RadioGroup>
