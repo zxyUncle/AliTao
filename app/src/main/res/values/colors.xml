@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+
+
+
+    <color name="toolbar_bg">#f5f5f5</color>
+<color name="backgroud_color">#00000000</color>
+    <color name="cffffff">#ffffff</color>
+    <color name="ce5e5e5">#e5e5e5</color>
+    <color name="cf0f0f0">#f0f0f0</color>
+    <color name="c3F51B5">#3F51B5</color>
+    <color name="caaaaaa">#aaaaaa</color>
+    <color name="c000000">#000000</color>
+    <color name="tranlation">#00000000</color>
+    <color name="c2c2c2c">#2c2c2c</color>
+    <color name="c333333">#333333</color>
+    <color name="c666666">#666666</color>
+    <color name="c999999">#999999</color>
+    <color name="cbfbfbf">#bfbfbf</color>
+    <color name="red">#EC1414</color>
+    <color name="AA0606">#AA0606</color>
+    <color name="red1">#EEB0B0</color>
+    <color name="c55000000">#55000000</color>
+
+
+    <color name="colorGreen">#ff669900</color>
+    <color name="colorGray">#bbb</color>
+    <color name="colorFFD6D6D6">#ededed</color>
+    <color name="colorButton">#ff6450</color>
+
+
+    <color name="colorMoney">#F96F49</color>
+    <color name="link_color">#ff406ca2</color>
+    <color name="list_bg_gaoliang">#E1FFFF</color>
+    <color name="spare_time_bg">#f5FAFF</color>
+    <color name="spare_time_divider">#f2f2f2</color>
+    <color name="colordf5b35">#df5b35</color>
+    <color name="orange_text">#FB7600</color>
+    <color name="course_bg_color">#F2EEED</color>
+    <color name="table_bg_color">#F5FAFF</color>
+
+    <color name="ac_bg">#F8F9FB</color>
+    <color name="toolbar_from">#F97049</color>
+    <color name="toolbar_to">#E44543</color>
+    <color name="textColor">#333333</color>
+    <color name="viewLine">#F2F2F2</color>
+    <color name="text69">#696969</color>
+    <color name="text4d">#4D4D4D</color>
+    <color name="text83">#838383</color>
+    <color name="text66">#666666</color>
+    <color name="recharge_bg">#F2F2F2</color>
+    <color name="textf3">#F36D31</color>
+    <color name="textd7">#d7d7d7</color>
+    <color name="textfb">#fb7653</color>
+    <color name="text26">#262626</color>
+    <color name="textf0">#f0f0f0</color>
+    <color name="textf7">#F75F42</color>
+    <color name="textf6">#F6B539</color>
+    <color name="texte5">#E5E5E5</color>
+    <color name="textbf">#BFC1C7</color>
+    <color name="text6d">#6D6C6C</color>
+    <color name="tabColor">#4B4B5B</color>
+    <color name="text87">#878787</color>
+    <color name="textf5">#f5f5f5</color>
+    <color name="course_view">#F6F6F6</color>
+    <color name="view6d">#6d6c6c</color>
+    <color name="text7E">#7E7E7E</color>
+    <color name="textfe">#FE8B3F</color>
+    <color name="textA4">#A4A4A4</color>
+    <color name="star_bg">#FEF9E4</color>
+    <color name="base_222222">#222222</color>
+    <color name="base_999999">#999999</color>
+    <color name="base_d5d5d5">#d5d5d5</color>
+    <color name="base_fafafa">#fafafa</color>
+    <color name="base_ffd5d5d5">#ffd5d5d5</color>
+    <color name="base_fff75926">#fff75926</color>
+    <color name="base_80f96f49">#80f96f49</color>
+    <color name="color_616161">#616161</color>
+</resources>

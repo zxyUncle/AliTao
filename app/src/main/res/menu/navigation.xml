@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@mipmap/ic_home_def"
+        android:title="@string/Withdrawal_application" />
+
+
+
+
+    <item
+        android:id="@+id/navigation_my"
+        android:icon="@mipmap/ic_my_def"
+        android:title="@string/my" />
+
+</menu>

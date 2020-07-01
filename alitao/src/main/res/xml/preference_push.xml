@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Server酱推送设置">
+        <SwitchPreference
+            android:checked="true"
+            android:defaultValue="false"
+            android:key="SCKEY_enable"
+            android:summary="Server酱开关"
+            android:summaryOff="已关闭Server酱推送"
+            android:summaryOn="已开启Server酱推送"
+            android:title="启用" />
+        <EditTextPreference
+            android:dependency="SCKEY_enable"
+            android:key="SCKEY"
+            android:summary="当前为空"
+            android:title="SCKEY" />
+        <PreferenceScreen
+            android:key="sckey_test"
+            android:title="推送测试"
+            android:summary="点击这里进行测试"/>
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="企业微信推送">
+        <SwitchPreference
+            android:checked="true"
+            android:key="wx_enable"
+            android:summary="企业微信推送开关"
+            android:summaryOff="已关闭企业微信推送"
+            android:summaryOn="已开启企业微信推送"
+            android:title="启用" />
+        <EditTextPreference
+            android:dependency="wx_enable"
+            android:key="wx_corpid"
+            android:summary="当前为空"
+            android:title="企业编号(corpid)" />
+        <EditTextPreference
+            android:dependency="wx_enable"
+            android:key="wx_corpsecret"
+            android:summary="当前为空"
+            android:title="应用密匙(corpsecret)" />
+        <EditTextPreference
+            android:dependency="wx_enable"
+            android:key="wx_agentid"
+            android:summary="当前为空"
+            android:singleLine="true"
+            android:title="应用编号(agentid)" />
+        <Preference
+            android:key="wx_test"
+            android:title="推送测试"
+            android:summary="点击这里进行测试"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="关于">
+        <Preference
+            android:title="作者"
+            android:summary="恶搞大王"/>
+        <Preference
+            android:title="当前版本"
+            android:summary="3.0"/>
+        <Preference
+            android:title="本程序完全免费开源"
+            android:summary="开源地址请点击这里"
+            ><intent
+            android:action="android.intent.action.VIEW"
+            android:data="https://github.com/egdw/mobile_monitor_android_simple" />
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>
