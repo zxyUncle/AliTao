@@ -99,5 +99,11 @@ dependencies {
 //    implementation 'com.github.KiWiLss.PopupUtils:ximageselect:1.0.7'
     implementation 'com.jph.takephoto:takephoto_library:4.0.3'
 
+    implementation 'com.kaopiz:kprogresshud:1.0.2'
+
+    //刷新框架
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'
+
 
 }

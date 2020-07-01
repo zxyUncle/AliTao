@@ -10,13 +10,13 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import java.util.Collections;
 import java.util.List;
 
-public class UserDataAdapter extends BaseQuickAdapter<UserBean, BaseViewHolder> {
+public class UserDataAdapter extends BaseQuickAdapter<UserBean.DataBean, BaseViewHolder> {
 
-    public UserDataAdapter (List<UserBean> data) {
+    public UserDataAdapter (List<UserBean.DataBean> data) {
         super(R.layout.adapter_user, data);
     }
     @Override
-    protected void convert(BaseViewHolder helper, UserBean item) {
+    protected void convert(BaseViewHolder helper, UserBean.DataBean item) {
         helper.setText(R.id.tvWithDrawMoney,item.getAmount() == null ? "提现金额：00" :
                 Html.fromHtml(
                         "<b><font color=#333333>提现金额：</b><font><b><big><font color=#F96F49>"+item.getAmount()+"</b></big><font/>"));

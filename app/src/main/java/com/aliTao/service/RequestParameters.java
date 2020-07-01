@@ -40,9 +40,12 @@ public class RequestParameters {
 	        this.mKeys.add(key);
 	        mValues.add(value);
 	    }
-	}	
+	}
 
-	
+	public void add(String key, boolean value){
+		this.mKeys.add(key);
+		this.mValues.add(String.valueOf(value));
+	}
 	public void add(String key, int value){
 	    this.mKeys.add(key);
         this.mValues.add(String.valueOf(value));

@@ -27,7 +27,7 @@ import com.jph.takephoto.permission.TakePhotoInvocationHandler;
 import java.io.File;
 
 
-public abstract class TakePhotoActivity extends AppCompatActivity implements TakePhoto.TakeResultListener, InvokeListener {
+public abstract class TakePhotoActivity extends BaseActivity implements TakePhoto.TakeResultListener, InvokeListener {
 
     protected TakePhoto takePhoto;
 

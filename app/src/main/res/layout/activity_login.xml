@@ -45,7 +45,7 @@
                     android:gravity="center_vertical"
                     android:hint="请输入用户名"
                     android:inputType="phone"
-                    android:text="11111111111"
+                    android:text="17601422354"
                     android:paddingLeft="10dp"
                     android:textColor="@color/colorGray"
                     android:textSize="16sp"/>
@@ -81,6 +81,7 @@
                     android:gravity="center_vertical"
                     android:hint="请输入密码"
                     android:maxLines="20"
+                    android:text="mm123123"
                     android:inputType="textPassword"
                     android:paddingLeft="10dp"
                     android:textColor="@color/colorGray"

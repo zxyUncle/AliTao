@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.aliTao.model.BaseResult;
 import com.zhy.http.okhttp.callback.Callback;
 
 import org.greenrobot.eventbus.Logger;
@@ -80,8 +81,8 @@ public abstract class JsonCallback<T> extends Callback<T> {
 
     @Override
     public void onResponse(T response, int id) {
-      preException(response, id);
 
+      preException(response, id);
     }
 
 
@@ -92,8 +93,17 @@ public abstract class JsonCallback<T> extends Callback<T> {
      * @param id
      */
     private void preException(T response, int id) {
+        if (response instanceof BaseResult) {
+            BaseResult baseResult = (BaseResult) response;
+            if (baseResult .getCode() == 0 ){
+                onSuccess(response,id);
+            } else {
+                onException(response,id);
+            }
+        } else {
+            onSuccess(response,id);
+        }
 
-        onException(response, id);
     }
 
     /**

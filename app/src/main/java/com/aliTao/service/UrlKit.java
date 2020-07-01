@@ -3,7 +3,7 @@ package com.aliTao.service;
 public class UrlKit {
     private static final String API_BASE_URL = "http://115.28.208.167:5001/monitor/";
     public static String getUrl(String action) {
-        return new StringBuilder(API_BASE_URL).append(API_BASE_URL).append(action).toString();
+        return new StringBuilder(API_BASE_URL).append(action).toString();
     }
 
 

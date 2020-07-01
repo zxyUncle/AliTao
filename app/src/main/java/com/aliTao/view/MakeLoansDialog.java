@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
+import android.text.InputType;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.aliTao.R;
+import com.aliTao.utils.ToastUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -36,15 +38,17 @@ public class MakeLoansDialog extends Dialog {
 
     public EditText text_code;
 
+    public onConfirmListener listener;
 
     public MakeLoansDialog(Activity context) {
         super(context);
         this.context = context;
     }
 
-    public MakeLoansDialog(Activity context, int theme) {
+    public MakeLoansDialog(Activity context, int theme,onConfirmListener confirmListener) {
         super(context, theme);
         this.context = context;
+        this.listener = confirmListener;
     }
 
     @Override
@@ -55,6 +59,7 @@ public class MakeLoansDialog extends Dialog {
         text_code = (EditText) findViewById(R.id.text_code);
         btn_save = (AppCompatTextView) findViewById(R.id.btn_save_pop);
         btn_cancle_pop = (AppCompatTextView) findViewById(R.id.btn_cancle_pop);
+        text_code.setInputType(InputType.TYPE_CLASS_NUMBER);
         showkeyBourd();
         /*
          * 获取圣诞框的窗口对象及参数对象以修改对话框的布局设置, 可以直接调用getWindow(),表示获得这个Activity的Window
@@ -73,11 +78,11 @@ public class MakeLoansDialog extends Dialog {
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (text_code.getText().toString().trim().length() >= 6) {
-                    Toast.makeText(context, "验证码失效", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, "验证码错误", Toast.LENGTH_SHORT).show();
+                if (text_code.getText().toString().trim().length() == 0) {
+                    ToastUtils.toast(context,"请输入提现金额");
+                    return;
                 }
+                    listener.onClick(Double.parseDouble(text_code.getText().toString()),MakeLoansDialog.this);
             }
         });
         btn_cancle_pop.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +102,10 @@ public class MakeLoansDialog extends Dialog {
         manager.hideSoftInputFromWindow(text_code.getWindowToken(), 0);
     }
 
+
+    public interface onConfirmListener{
+        void onClick(double money,Dialog dialog);
+    }
     void showkeyBourd() {
         //自动获取焦点
         text_code.setFocusable(true);

@@ -6,6 +6,8 @@ public class EventBusMessage {
     public static String TACKPHONE_PHONE_="获取照相机";
     public static String TACKPHONE_CAMERA="获取相册";
     public static String TACKPHONE_IMG_URL="获取相册";
+    public static String UPDATEBANKNAME="更新银行名称";
+
 
     public EventBusMessage(String tag) {
         this.tag = tag;

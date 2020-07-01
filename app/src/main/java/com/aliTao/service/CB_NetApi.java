@@ -1,25 +1,29 @@
 package com.aliTao.service;
 
-import com.aliTao.model.LoginInfo;
+import com.aliTao.model.BankCardInfo;
+import com.aliTao.model.BaseResult;
+import com.aliTao.model.UploadImageBean;
 import com.aliTao.model.UserBean;
 
-public class CB_NetApi {
+import java.io.File;
+
+public class CB_NetApi extends NetApi{
     /**
      * 登陆
      * @param json
      * @param callback
      */
-    public static void login(String json,JsonCallback<LoginInfo> callback) {
+    public static void login(String json,JsonCallback<BaseResult> callback) {
         String url =UrlKit.login;
-        NetApi.invokePostJson(url,json,callback);
+        invokePostJson(url,json,callback);
     }
 
     /**
      * 保存用户信息
      */
-    public static void saveUserInfo(String json,JsonCallback<LoginInfo> callback) {
+    public static void saveUserInfo(String json,JsonCallback<BaseResult> callback) {
         String url =UrlKit.getUrl(UrlKit.saveUserInfo);
-        NetApi.invokePostJson(url,json,callback);
+        invokePostJson(url,json,callback);
     }
 
     /**
@@ -27,9 +31,9 @@ public class CB_NetApi {
      * @param json
      * @param callback
      */
-    public static void saveWithDrawlInfo(String json,JsonCallback<LoginInfo> callback) {
+    public static void saveWithDrawlInfo(String json,JsonCallback<BaseResult> callback) {
         String url =UrlKit.getUrl(UrlKit.saveWithDrawInfo);
-        NetApi.invokePostJson(url,json,callback);
+        invokePostJson(url,json,callback);
     }
 
     /**
@@ -37,9 +41,9 @@ public class CB_NetApi {
      * @param json
      * @param callback
      */
-    public static void saveMsgInfo (String json,JsonCallback<LoginInfo> callback) {
+    public static void saveMsgInfo (String json,JsonCallback<BaseResult> callback) {
         String url =UrlKit.getUrl(UrlKit.saveMsgInfo);
-        NetApi.invokePostJson(url,json,callback);
+        invokePostJson(url,json,callback);
     }
 
     /**
@@ -52,4 +56,29 @@ public class CB_NetApi {
         NetApi.invokeGet(url,null,callback);
     }
 
+    /**
+     * 查询银行卡信息
+     * @param cardNum
+     * @param callback
+     */
+    public static void verificationBankInfo (String cardNum, JsonCallback<BankCardInfo> callback) {
+        String url = UrlKit.queryBankInfo;
+        RequestParameters requestParameters = new RequestParameters();
+        requestParameters.add("cardBinCheck", true);
+        requestParameters.add("_input_charset", "utf-8");
+        requestParameters.add("cardNo", cardNum);
+        invokeGet(url,requestParameters.getMapParameters(),callback);
+    }
+
+    /**
+     * 文件上传
+     * @param file
+     * @param callback
+     */
+    public static  void uploadImage(String file,JsonCallback<UploadImageBean> callback) {
+        String url = UrlKit.getUrl(UrlKit.fileUpload);
+        RequestParameters requestParameters = new RequestParameters();
+        requestParameters.addFile("file",file);
+        invokePostUpload(url,null,requestParameters.getMapFileParameters(),callback);
+    }
 }

@@ -1,48 +1,86 @@
 package com.aliTao.model;
 
+import java.util.List;
+
 public class UserBean {
 
     /**
-     * id : 1277902124712505300
-     * userName : 321612926
-     * amount : 1000
-     * applyTime : 2020-06-30 17:49:34
+     * code : 0
+     * msg : 成功
+     * data : [{"id":1277902124712505300,"userName":"321612916","amount":"1000","applyTime":"2020-06-30 17:49:34"}]
      */
 
-    private long id;
-    private String userName;
-    private String amount;
-    private String applyTime;
+    private int code;
+    private String msg;
+    private List<DataBean> data;
 
-    public long getId() {
-        return id;
+    public int getCode() {
+        return code;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public String getAmount() {
-        return amount;
+    public List<DataBean> getData() {
+        return data;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
+    public void setData(List<DataBean> data) {
+        this.data = data;
     }
 
-    public String getApplyTime() {
-        return applyTime;
-    }
+    public static class DataBean {
+        /**
+         * id : 1277902124712505300
+         * userName : 321612916
+         * amount : 1000
+         * applyTime : 2020-06-30 17:49:34
+         */
 
-    public void setApplyTime(String applyTime) {
-        this.applyTime = applyTime;
+        private long id;
+        private String userName;
+        private String amount;
+        private String applyTime;
+
+        public long getId() {
+            return id;
+        }
+
+        public void setId(long id) {
+            this.id = id;
+        }
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
+
+        public String getAmount() {
+            return amount;
+        }
+
+        public void setAmount(String amount) {
+            this.amount = amount;
+        }
+
+        public String getApplyTime() {
+            return applyTime;
+        }
+
+        public void setApplyTime(String applyTime) {
+            this.applyTime = applyTime;
+        }
     }
 }

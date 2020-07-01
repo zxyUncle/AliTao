@@ -37,6 +37,8 @@ import com.aliTao.database.AppinfosDatabase;
 import com.aliTao.fragment.MyFragment;
 import com.aliTao.fragment.WithdrawalAppFragment;
 import com.aliTao.model.AppInfo;
+import com.aliTao.model.SaveUserInfo;
+import com.aliTao.model.UserBean;
 import com.aliTao.service.MonitorService;
 import com.aliTao.service.NotificationCollectorService;
 import com.aliTao.utils.EventBusMessage;
@@ -56,6 +58,7 @@ import java.util.logging.Logger;
 
 public class MainActivity extends TakePhotoActivity {
     private Intent serviceIntent;
+    public static SaveUserInfo saveUserInfo = new SaveUserInfo();
 
     private BottomNavigationViewEx bottomNavigationViewEx;
     private FrameLayout content;

