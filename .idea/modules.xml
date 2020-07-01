@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AliTao.iml" filepath="$PROJECT_DIR$/.idea/modules/AliTao.iml" group="AliTao" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AliTao-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AliTao-app.iml" group="AliTao/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Android-AliTao.iml" filepath="$PROJECT_DIR$/.idea/modules/Android-AliTao.iml" group="AliTao" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="AliTao/app" />
     </modules>
   </component>
