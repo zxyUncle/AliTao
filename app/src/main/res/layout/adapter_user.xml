@@ -30,14 +30,12 @@
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/tverification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/et_noframe"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="5dp"
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="@dimen/dp_30"
+                android:background="@drawable/shape_round_f1f1f1"
+                android:gravity="center"
                 android:text="@string/verification"
+                android:textColor="@color/c3F51B5"
                 android:textSize="@dimen/sp_16" />
         </LinearLayout>
 

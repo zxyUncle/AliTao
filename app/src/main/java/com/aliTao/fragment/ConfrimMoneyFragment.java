@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.aliTao.R;
+import com.aliTao.utils.EventBusMessage;
 import com.aliTao.view.MakeLoansDialog;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by zxy on 2020/7/1 0001 10:44
@@ -20,7 +23,7 @@ import com.aliTao.view.MakeLoansDialog;
 public class ConfrimMoneyFragment extends Fragment {
     public static ConfrimMoneyFragment confrimMoneyFragment;
     private View view;
-    private Button btnComfig;
+    private Button btnComfig, btnLastStep;
 
     public static ConfrimMoneyFragment newInstance() {
         if (confrimMoneyFragment == null) {
@@ -40,6 +43,7 @@ public class ConfrimMoneyFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         btnComfig = (Button) view.findViewById(R.id.btnComfig);
+        btnLastStep = (Button) view.findViewById(R.id.btnLastStep);
         initView();
     }
 
@@ -48,6 +52,12 @@ public class ConfrimMoneyFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 new MakeLoansDialog(getActivity(), R.style.Translucent_NoTitle).show();
+            }
+        });
+        btnLastStep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EventBus.getDefault().post(EventBusMessage.LAST_STEP_COMFIG);
             }
         });
 

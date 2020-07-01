@@ -12,9 +12,10 @@
         android:layout_height="wrap_content"
         android:background="@color/cffffff"
         android:gravity="center"
+        android:paddingTop="@dimen/dp_20"
         android:minWidth="200dp"
         android:orientation="vertical"
-        android:padding="@dimen/dp_20">
+        >
 
         <android.support.v7.widget.AppCompatTextView
             android:layout_width="match_parent"
@@ -32,6 +33,8 @@
             android:background="@drawable/et_noframe"
             android:hint="提现金额"
             android:inputType="number"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginRight="@dimen/dp_20"
             android:maxLength="6"
             android:minHeight="45dp"
             android:padding="8dp"
@@ -41,9 +44,9 @@
             android:id="@+id/btn_save_pop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/edit_bg"
             android:gravity="center"
             android:padding="10dp"
@@ -68,9 +71,7 @@
             android:id="@+id/mTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_25"
-            android:layout_marginTop="@dimen/dp_10"
-            android:layout_marginRight="@dimen/dp_25"
+           android:layout_margin="@dimen/dp_10"
             android:text="@string/reminder"
             android:textColor="@color/AA0606"
             android:textSize="@dimen/sp_14" />

@@ -64,19 +64,19 @@ buildscript {
     }
 }
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.squareup.okhttp:okhttp:2.4.0'
-  //  compile 'com.squareup.okio:okio:1.5.0'
-    compile 'com.android.support:appcompat-v7:25.1.0'
+    implementation 'com.squareup.okhttp:okhttp:2.4.0'
+    //  compile 'com.squareup.okio:okio:1.5.0'
+    implementation 'com.android.support:appcompat-v7:25.1.0'
     implementation 'com.android.support:design:25.+'
-    compile 'com.squareup.okhttp3:okhttp:3.9.0'
-    compile 'com.alibaba:fastjson:1.1.34.android'
-    testCompile 'junit:junit:4.12'
-   // compile files('src/libs/okio-1.13.0.jar')
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.alibaba:fastjson:1.1.34.android'
+    testImplementation 'junit:junit:4.12'
+    // compile files('src/libs/okio-1.13.0.jar')
     // 基础依赖包，必须要依赖
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
     //今日头条适配
@@ -91,4 +91,13 @@ dependencies {
     implementation 'com.gyf.immersionbar:immersionbar:2.3.3'
     //今日头条适配
     implementation 'me.jessyan:autosize:1.2.1'
+
+    //OkHttp
+    implementation 'com.zhy:okhttputils:2.6.2'
+    implementation 'com.google.code.gson:gson:2.6.2'
+
+//    implementation 'com.github.KiWiLss.PopupUtils:ximageselect:1.0.7'
+    implementation 'com.jph.takephoto:takephoto_library:4.0.3'
+
+
 }

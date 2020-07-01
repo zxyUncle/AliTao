@@ -31,6 +31,7 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.aliTao.activity.TakePhotoActivity;
 import com.aliTao.adapter.AppInfosAdapter;
 import com.aliTao.database.AppinfosDatabase;
 import com.aliTao.fragment.MyFragment;
@@ -38,8 +39,14 @@ import com.aliTao.fragment.WithdrawalAppFragment;
 import com.aliTao.model.AppInfo;
 import com.aliTao.service.MonitorService;
 import com.aliTao.service.NotificationCollectorService;
+import com.aliTao.utils.EventBusMessage;
 import com.gyf.immersionbar.ImmersionBar;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.jph.takephoto.model.TResult;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,7 +54,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends TakePhotoActivity {
     private Intent serviceIntent;
 
     private BottomNavigationViewEx bottomNavigationViewEx;
@@ -65,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        EventBus.getDefault().register(this);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
         initView();
@@ -121,9 +128,26 @@ public class MainActivity extends AppCompatActivity {
                 .statusBarColor(R.color.toolbar_bg)
                 .init();
     }
+
+    @Override
+    public void OnTakeSuccess(TResult result) {
+        EventBus.getDefault().post(new EventBusMessage(EventBusMessage.TACKPHONE_IMG_URL,result.getImage().getOriginalPath()));
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void eventbuss(Object object) {
+        if (object.toString() == EventBusMessage.TACKPHONE_CAMERA) {
+            takePhoto.onPickFromCapture(uri);
+        } else if (object.toString() == EventBusMessage.TACKPHONE_PHONE_) {
+            takePhoto.onPickFromGallery();
+        }
+
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
         startService(serviceIntent);
         transaction.remove(withdrawFragment);
         transaction.remove(myFragment);
@@ -234,7 +258,6 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
     }
-
 
     private void toggleNotificationListenerService() {
         PackageManager pm = getPackageManager();
