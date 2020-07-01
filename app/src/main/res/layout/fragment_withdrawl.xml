@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/toolbar_bg">
+    android:background="@color/toolbar_bg"
+    android:orientation="vertical">
 
     <RadioGroup
         android:id="@+id/mRadioGroup"
@@ -11,11 +11,10 @@
         android:layout_height="@dimen/dp_40"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/shape_round_ffffff"
         android:orientation="horizontal"
-        android:padding="1dp"
-        android:layout_marginBottom="15dp"
-        >
+        android:padding="1dp">
 
         <RadioButton
             android:id="@+id/mRadioButton1"
@@ -24,16 +23,17 @@
             android:layout_weight="1"
             android:background="@drawable/select_color_3f51b5"
             android:button="@null"
+            android:enabled="false"
             android:gravity="center"
             android:text="用户信息"
-            android:enabled="false"
             android:textColor="@drawable/select_color_ffffff"
             android:textSize="@dimen/dp_16" />
 
         <View
+            android:visibility="gone"
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@color/c999999" />
+            android:background="@color/cf0f0f0" />
 
         <RadioButton
             android:id="@+id/mRadioButton2"
@@ -43,17 +43,17 @@
             android:background="@drawable/select_color_3f51b5"
             android:button="@null"
             android:clickable="false"
+            android:enabled="false"
             android:gravity="center"
             android:text="人脸认证"
-            android:enabled="false"
-            android:visibility="gone"
             android:textColor="@drawable/select_color_ffffff"
-            android:textSize="@dimen/dp_16" />
+            android:textSize="@dimen/dp_16"
+            android:visibility="gone" />
 
         <View
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@color/c999999" />
+            android:background="@color/cf0f0f0" />
 
         <RadioButton
             android:id="@+id/mRadioButton3"
@@ -73,6 +73,5 @@
         android:id="@+id/mFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cffffff"
-        />
+        android:background="@color/cffffff" />
 </LinearLayout>
