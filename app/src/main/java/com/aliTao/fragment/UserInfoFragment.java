@@ -123,7 +123,7 @@ public class UserInfoFragment extends Fragment {
             ToastUtils.toast(getActivity(), "手机号不正确");
             return;
         }
-        if (etIdNum.getText().toString().trim().length() == 0) {
+        if (etIdNum.getText().toString().trim().length() == 0 || etIdNum.getText().toString().trim().length() != 18) {
             ToastUtils.toast(getActivity(), "身份证号码不正确");
             return;
         }
@@ -158,7 +158,7 @@ public class UserInfoFragment extends Fragment {
         String ipAddress = Config.getIPAddress(getActivity());
         saveUserInfo.setIpAddr(ipAddress);
 
-        EventBus.getDefault().post(EventBusMessage.NEXT_STEP_USERINFO);
+
     }
 
     /**
@@ -176,6 +176,12 @@ public class UserInfoFragment extends Fragment {
             public void onException(BankCardInfo response, int id) {
 
                 Log.e("wqx","error");
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ToastUtils.toast(getContext(),"银行卡不正确");
+                    }
+                });
             }
 
             @Override
@@ -198,6 +204,7 @@ public class UserInfoFragment extends Fragment {
                     String result = stringBuilder.toString();
                     Map map = JSON.parseObject(result);
                     MainActivity.saveUserInfo.setBankName((String) map.get(response.getBank()));
+                    EventBus.getDefault().post(EventBusMessage.NEXT_STEP_USERINFO);
                     EventBus.getDefault().post(EventBusMessage.UPDATEBANKNAME);
                 }
             }

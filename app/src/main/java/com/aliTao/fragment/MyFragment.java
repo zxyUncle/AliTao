@@ -100,7 +100,7 @@ public class MyFragment extends Fragment {
 //        adapter.setNewData(userBeanList);
     }
 
-    private void initGetUserInfo () {
+    private void initGetUserInfo() {
         final MainActivity mainActivity = (MainActivity) getActivity();
         mainActivity.showLoginHUD();
         CB_NetApi.getUserInfo(Config.GetString(getContext(), Config.SHARE_USER_NAME), new JsonCallback<UserBean>() {
@@ -110,8 +110,16 @@ public class MyFragment extends Fragment {
             }
 
             @Override
-            public void onException(UserBean response, int id) {
+            public void onException(final UserBean response, int id) {
+                mSmartRefresh.finishRefresh();
                 mainActivity.goneLoginHUD();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvNoMessage.setVisibility(View.VISIBLE);
+                        recyclerView.setVisibility(View.GONE);
+                    }
+                });
             }
 
             @Override
@@ -121,7 +129,7 @@ public class MyFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (response != null && response.getData() != null && response.getData().size() !=0) {
+                        if (response != null && response.getData() != null && response.getData().size() != 0) {
                             adapter.setNewData(response.getData());
                             tvNoMessage.setVisibility(View.GONE);
                             recyclerView.setVisibility(View.VISIBLE);
@@ -134,12 +142,13 @@ public class MyFragment extends Fragment {
             }
         });
     }
+
     private void initLinstener() {
         mSmartRefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 initGetUserInfo();
-             //   mSmartRefresh.finishRefresh();
+                //   mSmartRefresh.finishRefresh();
             }
         });
         mSmartRefresh.setOnLoadMoreListener(new OnLoadMoreListener() {

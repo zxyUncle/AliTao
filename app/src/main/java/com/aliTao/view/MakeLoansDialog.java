@@ -86,7 +86,11 @@ public class MakeLoansDialog extends Dialog {
                     ToastUtils.toast(context,"请输入提现金额");
                     return;
                 }
+                if (Integer.parseInt(text_code.getText().toString()) > 0) {
                     listener.onClick(Double.parseDouble(text_code.getText().toString()));
+                } else {
+                    ToastUtils.toast(context,"请输入正确的提现金额");
+                }
             }
         });
         btn_cancle_pop.setOnClickListener(new View.OnClickListener() {

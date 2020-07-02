@@ -16,10 +16,12 @@
     <string name="next">下一步</string>
     <string name="Withdrawal_application">提现申请</string>
     <string name="my">我的</string>
+    <string name="my_record">我的提现记录</string>
     <string name="verification">验证</string>
     <string name="verificationCode">验证码</string>
 
-    <string name="reminder">温馨提示：你好，为了保障您的权益，请确保您的卡号与支行信息无误，如填写错误导致无法转账，本平台不负任何责任！</string>
+    <string name="reminder">温馨提示：为了保障您的权益，请确保您的个人信息无误，如填写错误导致资金无法到账，本平台不负任何责任！</string>
+    <string name="withdrawl_reminder">温馨提示：为了确保是您本人操作，提现申请成功后，平台将在24小时内给您发送一条提现验证码，在这期间请确保App的正常运行，谢谢您的理解！</string>
 
 </resources>
 

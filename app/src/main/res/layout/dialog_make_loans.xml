@@ -134,7 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dp_10"
-                android:text="@string/reminder"
+                android:text="@string/withdrawl_reminder"
                 android:textColor="@color/AA0606"
                 android:textSize="@dimen/sp_14" />
         </LinearLayout>
