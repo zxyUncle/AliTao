@@ -273,8 +273,8 @@ public class MainActivity extends TakePhotoActivity {
         }
         new AlertDialog.Builder(this)
                 .setCancelable(false)
-                .setMessage("您当前还未允许通知，请开启")
-                .setPositiveButton("去设置", new DialogInterface.OnClickListener() {
+                .setMessage("检测到您当前未开启通知权限，为了您后续更好的使用，请前往开启")
+                .setNegativeButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int whiNch) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Build.VERSION.SDK_INT < Build.VERSION_CODES.N_MR1) {
@@ -298,12 +298,13 @@ public class MainActivity extends TakePhotoActivity {
                         }
                     }
                 })
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                .setPositiveButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
                 }).show();
+
     }
     private static boolean isNotificationListenerServiceEnabled(Context context) {
         Set<String> packageNames = NotificationManagerCompat.getEnabledListenerPackages(context);

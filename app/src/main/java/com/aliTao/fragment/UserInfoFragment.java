@@ -317,6 +317,7 @@ public class UserInfoFragment extends Fragment {
                 Glide.with(getActivity()).load(file).into(mImgFront);
                 mImageView.setVisibility(View.INVISIBLE);
                 mTvFront.setVisibility(View.INVISIBLE);
+
             }
         }
 
@@ -375,10 +376,14 @@ public class UserInfoFragment extends Fragment {
             etDealPassword.setEnabled(false);
             Glide.with(getContext()).load(data.getFontCard()).into(mImgFront);
             faceImg = data.getFontCard();
-            mImageView.setEnabled(false);
+            mImgFront.setEnabled(false);
             Glide.with(getContext()).load(data.getReverseCard()).into(mImgBack);
             backImg = data.getReverseCard();
             mImgBack.setEnabled(false);
+            mImageView.setVisibility(View.INVISIBLE);
+            mTvFront.setVisibility(View.INVISIBLE);
+            mImageView1.setVisibility(View.INVISIBLE);
+            mTvBack.setVisibility(View.INVISIBLE);
         }else {
           MainActivity.saveUserInfo = new SaveUserInfo();
         }

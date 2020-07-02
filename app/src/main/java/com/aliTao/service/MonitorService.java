@@ -71,7 +71,7 @@ public class MonitorService extends Service {
         //保持为前台应用状态
         NotificationManager nm = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
-        builder.setContentTitle("手机监控器监听通知栏中...")
+        builder.setContentTitle("AliTao后台运行中...")
                 .setContentText("")
                 .setWhen(System.currentTimeMillis())
                 .setPriority(Notification.PRIORITY_MIN)
