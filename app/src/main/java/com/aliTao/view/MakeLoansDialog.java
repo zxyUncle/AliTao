@@ -6,7 +6,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
@@ -15,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.aliTao.MainActivity;
 import com.aliTao.R;
 import com.aliTao.utils.ToastUtils;
 
@@ -34,7 +37,7 @@ public class MakeLoansDialog extends Dialog {
      */
     Activity context;
 
-    private AppCompatTextView btn_save, btn_cancle_pop;
+    private AppCompatTextView btn_save, btn_cancle_pop,tvBankName;
 
     public EditText text_code;
 
@@ -60,6 +63,7 @@ public class MakeLoansDialog extends Dialog {
         btn_save = (AppCompatTextView) findViewById(R.id.btn_save_pop);
         btn_cancle_pop = (AppCompatTextView) findViewById(R.id.btn_cancle_pop);
         text_code.setInputType(InputType.TYPE_CLASS_NUMBER);
+        tvBankName = (AppCompatTextView) findViewById(R.id.dialog_tvBAnkName);
         showkeyBourd();
         /*
          * 获取圣诞框的窗口对象及参数对象以修改对话框的布局设置, 可以直接调用getWindow(),表示获得这个Activity的Window
@@ -93,7 +97,43 @@ public class MakeLoansDialog extends Dialog {
             }
         });
 
+        initChangeEdit();
+        if (MainActivity.saveUserInfo != null && MainActivity.saveUserInfo.getBankCard().length()>5) {
+            String cardNum = MainActivity.saveUserInfo.getBankCard().substring(MainActivity.saveUserInfo.getBankCard().length()-4,MainActivity.saveUserInfo.getBankCard().length());
+            //银行名称
+            tvBankName.setText(MainActivity.saveUserInfo.getBankName()+"("+cardNum+")");
+        }
+
         this.setCancelable(false);
+    }
+
+    /**
+     * 监听输入
+     */
+    void initChangeEdit() {
+        text_code.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String text = editable.toString().trim();
+                if (text.length()>0) {
+                    btn_save.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.edit_bg_make_loans));
+                    btn_save.setTextColor(context.getResources().getColor(R.color.cffffff));
+                } else {
+                    btn_save.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.edit_bg_grary_make_loans));
+                    btn_save.setTextColor(context.getResources().getColor(R.color.c666666));
+                }
+            }
+        });
     }
 
     void hindKeyBourd() {

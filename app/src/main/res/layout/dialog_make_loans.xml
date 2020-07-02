@@ -10,71 +10,137 @@
         android:id="@+id/create_user_dialog_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/cffffff"
-        android:gravity="center"
-        android:paddingTop="@dimen/dp_20"
-        android:minWidth="200dp"
+        android:background="@color/viewLine"
+        android:paddingTop="@dimen/dp_10"
+        android:minWidth="300dp"
         android:orientation="vertical"
         >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <android.support.v7.widget.AppCompatTextView
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/btn_cancle_pop"
+                android:layout_width="0dp"
+                android:layout_weight="0.8"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:text="取消"
+                android:textColor="@color/c666666"
+                android:textSize="@dimen/sp_15" />
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="提现"
+                android:textStyle="bold"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/sp_18" />
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="提现"
-            android:textColor="@color/textColor"
-            android:textSize="@dimen/sp_18" />
-
-        <EditText
-            android:id="@+id/text_code"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/et_noframe"
-            android:hint="提现金额"
-            android:inputType="number"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:layout_marginRight="@dimen/dp_20"
-            android:maxLength="6"
-            android:minHeight="45dp"
-            android:padding="8dp"
-            android:textSize="16sp" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/btn_save_pop"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:orientation="vertical"
+           android:layout_marginBottom="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/edit_bg"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="确定"
-            android:textColor="@color/cffffff"
-            android:textSize="@dimen/sp_16" />
+            android:background="@color/cffffff">
 
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/btn_cancle_pop"
-            android:layout_width="@dimen/dp_100"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="取消"
-            android:textColor="@color/c999999"
-            android:textSize="@dimen/sp_16" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/toolbar_bg"
+                android:padding="@dimen/dp_20">
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:text="到账银行卡"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/dialog_tvBAnkName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:layout_marginLeft="20dp"/>
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/c666666"
+                        android:textSize="14sp"
+                        android:layout_marginLeft="20dp"
+                        android:text="24小时内到账"/>
+                </LinearLayout>
+            </LinearLayout>
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:text="提现金额"/>
 
-        <TextView
-            android:id="@+id/mTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-           android:layout_margin="@dimen/dp_10"
-            android:text="@string/reminder"
-            android:textColor="@color/AA0606"
-            android:textSize="@dimen/sp_14" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="20dp">
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textColor"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:text="￥"/>
+                <EditText
+                    android:id="@+id/text_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/et_noframe"
+                    android:inputType="number"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:maxLength="6"
+                    android:minHeight="45dp"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/viewLine"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"></View>
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/btn_save_pop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/edit_bg_grary_make_loans"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="提现"
+                android:textColor="@color/c666666"
+                android:textSize="@dimen/sp_16" />
+            <TextView
+                android:id="@+id/mTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_10"
+                android:text="@string/reminder"
+                android:textColor="@color/AA0606"
+                android:textSize="@dimen/sp_14" />
+        </LinearLayout>
+
+
+
 
     </LinearLayout>
 </android.support.v7.widget.CardView>
